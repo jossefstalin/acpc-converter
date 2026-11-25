@@ -1,0 +1,28 @@
+name: Tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  codecs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: python -m unittest discover -s tests
+      - run: node tests/test_codec.js
+      - run: python -m py_compile ac_formats.py max_bridge.py converter_gui.py
+      - run: python package_release.py
+  native:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: .\viewer\native\build_windows.cmd
+      - run: python tests/smoke_native.py dist/AirConflicts_Viewer_Windows_x64.exe
