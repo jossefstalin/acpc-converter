@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+dist/
+analysis/
+deliverables/
+*.bmf
+*.msh
+*.dds
+*.blend
+*.exe
+*.max

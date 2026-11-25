@@ -1,0 +1,28 @@
+Air Conflicts Workshop　Windows 模型查看器
+
+在 64 位 Windows 上解压后双击 AirConflicts_Viewer_Windows_x64.exe。
+便携版直接使用 Windows 的图形接口，无需安装 Python、Blender、浏览器或 .NET。
+启动后会显示一个内置几何体。点“打开模型”或将 BMF、MSH、OBJ 拖进预览区。
+
+预览操作
+  左键拖动旋转，右键拖动平移，滚轮缩放，双击复位。Ctrl+O 打开文件。
+  显示模式可以切换颜色贴图、灰模、线框、颜色 UV、法线、光照贴图和光照 UV。
+  MSH 含多个 LOD 时可以在下拉框切换。拆成多个文件的 BMF LOD 可分别打开。
+  BMF 含动画时可拖动滑块、播放或逐帧检查。播放速度仅用于检视。
+
+贴图和 UV
+  解压整份资源并保留目录结构。MSH 和 OBJ 读取同目录或声明的 MTL。
+  普通 BMF 尝试使用同目录 1.dds；cockpit.bmf 尝试使用 cockpit.dds。
+  同目录有匹配的 cockpitlight.bmf 时，可以切换光照 UV。
+  找不到颜色贴图时，在顶部选中材质，再点“指定贴图”选 DDS、PNG、JPEG 或 BMP。
+  OBJ 默认按 Blender / Max 的 Z 向上解释。Y 向上的 OBJ 可在“视图”菜单切换。
+
+导出
+  从“文件”菜单保存预览 BMP，或将当前 LOD 和动画帧导出为 OBJ。
+  保留 OBJ 及其 .obj.mtl 文件。MTL 引用原颜色贴图，移动时请同时保留贴图路径。
+  OBJ 记录法线和颜色 UV。光照 UV、游戏 MSH / BMF 导出请使用 Blender 插件。
+
+编译
+  使用 Visual Studio 的 x64 C 工具与 Windows SDK 执行 build_windows.cmd。
+  在 Linux 安装 x86-64 MinGW-w64 后可用 sh build_mingw.sh 交叉编译。
+  这是独立实现的预览器。游戏特殊材质、玻璃和着色效果请在游戏中确认。

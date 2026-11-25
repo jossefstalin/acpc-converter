@@ -1,0 +1,92 @@
+{
+  "original_source_lossless_roundtrips": {
+    "bmf": 144,
+    "msh": 5
+  },
+  "blender_version": "4.3.2",
+  "blender_checks": [
+    {
+      "check": "Blender imports all five MSH files with exact UVs",
+      "result": [
+        {
+          "file": "analysis/ki45/ki45/cockpit.msh",
+          "faces": 7618,
+          "UV_sets": 2
+        },
+        {
+          "file": "analysis/db3/db3/cockpit.msh",
+          "faces": 9288,
+          "UV_sets": 2
+        },
+        {
+          "file": "analysis/fw190/cockpit.msh",
+          "faces": 8455,
+          "UV_sets": 2
+        },
+        {
+          "file": "analysis/avenger/cockpit.msh",
+          "faces": 9101,
+          "UV_sets": 2
+        },
+        {
+          "file": "analysis/avenger_sw/cockpit.msh",
+          "faces": 9101,
+          "UV_sets": 2
+        }
+      ],
+      "passed": true
+    },
+    {
+      "check": "BMF animation import",
+      "result": {
+        "frames": 6,
+        "shape_keys": 7
+      },
+      "passed": true
+    },
+    {
+      "check": "Original MSH > Blender > MSH roundtrip",
+      "result": {
+        "triangles": 9101,
+        "roundtrip_geometry_and_both_uvs": true
+      },
+      "passed": true
+    },
+    {
+      "check": "OBJ > Blender > game BMF",
+      "result": {
+        "triangles": 2137,
+        "frames": 1,
+        "bounds_preserved": true,
+        "source_obj_faces": 2141,
+        "degenerate_faces_removed_by_Blender_OBJ_import": 4
+      },
+      "passed": true
+    },
+    {
+      "check": "Animated BMF > Blender > animated BMF",
+      "result": {
+        "frames": 5,
+        "corner_positions_preserved": true
+      },
+      "passed": true
+    },
+    {
+      "check": "External OBJ multi-material color atlas > DDS > BMF and MSH",
+      "result": {
+        "texture_size": [
+          1024,
+          1024
+        ],
+        "mip_levels": 11,
+        "triangles": 2137,
+        "MSH_export": true,
+        "BMF_export": true
+      },
+      "passed": true
+    }
+  ],
+  "max_adapter_runtime_tested": false,
+  "viewer_gpu_runtime_tested": false,
+  "complete_ACPC_game_tested": false
+}
